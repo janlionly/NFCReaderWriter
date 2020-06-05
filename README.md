@@ -1,3 +1,4 @@
+# NFCReaderWriter
 [![Version](https://img.shields.io/cocoapods/v/NFCReaderWriter.svg?style=flat)](https://cocoapods.org/pods/NFCReaderWriter)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/NFCReaderWriter.svg?style=flat)](https://github.com/janlionly/NFCReaderWriter/blob/master/LICENSE)
@@ -8,37 +9,31 @@
 **NFCReaderWriter** which supports to read data from NFC chips(iOS 11) and write data to NFC chips(iOS 13) by iOS devices. Compatible with both Swift and Objective-C.
 
 ## Installation
-
 ### CocoaPods
-
-```ruby
+```swift
 pod 'NFCReaderWriter'
 ```
 
 ### Carthage
-
-```ruby
+```swift
 github "janlionly/NFCReaderWriter"
 ```
 
 ### Swift Package Manager
-
 1. Add the following to your `Package.swift`:
-	```ruby
+	```swift
 	.package(url: "https://github.com/janlionly/NFCReaderWriter.git", .upToNextMajor(from: "1.0.0")),
 	```
 2. Next, add `NFCReaderWriter` to your App targets dependencies like so:
-	```ruby
+	```swift
 	.target(name: "App", dependencies: ["NFCReaderWriter"]),
 	```
 3. Then open your project in Xcode 11+ (SwiftPM).
 
-
 ## Usage
-
 1. Set your provisioning profile to support for **Near Field Communication Tag Reading**;
 2. Open your project target, on **Signing & Capabilities** tab, add the Capability of **Near Field Communication Tag Reading**;
-3. Remember to add **NFCReaderUsageDescription** key for descriptions to your Info.plist;
+3. Remember to add **NFCReaderUsageDescription** key for descriptions to your Info.plist.
 
 ```swift
 /// NFC Reader(iOS 11):
@@ -64,11 +59,11 @@ readerWriter.begin()
 
 // implement NFCReaderDelegate to write data to NFC chip
 func reader(_ session: NFCReader, didDetect tags: [NFCNDEFTag]) {
+	// here for test data
   var payloadData = Data([0x02])
   let urls = ["apple.com", "google.com", "facebook.com"]
   payloadData.append(urls[Int.random(in: 0..<urls.count)].data(using: .utf8)!)
 
-  // here for test data
   let payload = NFCNDEFPayload.init(
     format: NFCTypeNameFormat.nfcWellKnown,
     type: "U".data(using: .utf8)!,
@@ -94,23 +89,18 @@ func readerDidBecomeActive(_ session: NFCReader) {
 func reader(_ session: NFCReader, didInvalidateWithError error: Error) {
   print("ERROR:\(error)")
 }
-
 ```
 
 ## Requirements
-
 - iOS 11.0+
 - Swift 4.2 to 5.2
 
 ## Author
-
 Visit my github: [janlionly](https://github.com/janlionly)<br>
 Contact with me by email: janlionly@gmail.com
 
 ## Contribute
-
 I would love you to contribute to **NFCReaderWriter**
 
 ## License
-
 **NFCReaderWriter** is available under the MIT license. See the [LICENSE](https://github.com/janlionly/NFCReaderWriter/blob/master/LICENSE) file for more info.
