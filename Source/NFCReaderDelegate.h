@@ -5,9 +5,12 @@
 //  Created by janlionly on 2020/6/2.
 //
 
+#import <CoreNFC/CoreNFC.h>
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class NFCReader;
+
 @protocol NFCReaderDelegate <NSObject>
 
 @required
