@@ -22,8 +22,6 @@ let package = Package(
         .target(
             name: "NFCReaderWriter",
             dependencies: []
-//            publicHeadersPath: "include",
-//            linkerSettings: [.linkedFramework("CoreNFC")]
         ),
         .testTarget(
             name: "NFCReaderWriterTests",
