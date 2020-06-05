@@ -21,9 +21,9 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "NFCReaderWriter",
-            dependencies: [],
-            publicHeadersPath: "include",
-            linkerSettings: [.linkedFramework("CoreNFC")]
+            dependencies: []
+//            publicHeadersPath: "include",
+//            linkerSettings: [.linkedFramework("CoreNFC")]
         ),
         .testTarget(
             name: "NFCReaderWriterTests",

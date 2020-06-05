@@ -61,8 +61,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		27537DE02489F0AC00B5DBB1 /* NFCReaderWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NFCReaderWriter.h; sourceTree = "<group>"; };
-		27537DE12489F0AC00B5DBB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27537DEC2489F0C600B5DBB1 /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
 		2753AB2F2489FEA2004333A1 /* JLNFCReaderWriter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JLNFCReaderWriter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2753AB312489FEA2004333A1 /* JLNFCReaderWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JLNFCReaderWriter.h; sourceTree = "<group>"; };
@@ -111,15 +109,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		27537DDF2489F0AC00B5DBB1 /* NFCReaderWriter */ = {
-			isa = PBXGroup;
-			children = (
-				27537DE02489F0AC00B5DBB1 /* NFCReaderWriter.h */,
-				27537DE12489F0AC00B5DBB1 /* Info.plist */,
-			);
-			path = NFCReaderWriter;
-			sourceTree = "<group>";
-		};
 		27537DEB2489F0C600B5DBB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +131,6 @@
 			children = (
 				27C00E00248A985800014A9C /* Sources */,
 				27820B1A24890DAD00075BDB /* NFCReaderWriterDemo */,
-				27537DDF2489F0AC00B5DBB1 /* NFCReaderWriter */,
 				2753AB302489FEA2004333A1 /* JLNFCReaderWriter */,
 				27820B1924890DAD00075BDB /* Products */,
 				27537DEB2489F0C600B5DBB1 /* Frameworks */,

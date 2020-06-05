@@ -21,6 +21,19 @@ pod 'NFCReaderWriter'
 github "janlionly/NFCReaderWriter"
 ```
 
+### Swift Package Manager
+
+1. Add the following to your `Package.swift`:
+	```ruby
+	.package(url: "https://github.com/janlionly/NFCReaderWriter.git", .upToNextMajor(from: "1.0.0")),
+	```
+2. Next, add `NFCReaderWriter` to your App targets dependencies like so:
+	```ruby
+	.target(name: "App", dependencies: ["NFCReaderWriter"]),
+	```
+3. Then open your project in Xcode 11+ (SwiftPM).
+
+
 ## Usage
 
 1. Set your provisioning profile to support for **Near Field Communication Tag Reading**;
