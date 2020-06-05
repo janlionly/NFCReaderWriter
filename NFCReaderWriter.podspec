@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/janlionly'
   s.ios.deployment_target = '11.0'
   s.requires_arc = true
-  s.source_files = 'Sources/*'
+  s.source_files = 'Sources/NFCReaderWriter/*'
   s.frameworks = 'CoreNFC'
   s.swift_versions = ['4.2', '5.0', '5.1', '5.2']
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }

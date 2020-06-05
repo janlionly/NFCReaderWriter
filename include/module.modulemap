@@ -1,0 +1,11 @@
+module NFCReaderWriter {
+     umbrella header "NFCReaderWriter/NFCConstants.h"
+     umbrella header "NFCReaderWriter/NFCNDEFReader.h"
+     umbrella header "NFCReaderWriter/NFCNDEFWriter.h"
+     umbrella header "NFCReaderWriter/NFCReader.h"
+     umbrella header "NFCReaderWriter/NFCReaderDelegate.h"
+     umbrella header "NFCReaderWriter/NFCReaderWriter.h"
+     umbrella header "NFCReaderWriter/NFCTagReader.h"
+     export *
+     module * { export * }
+ }

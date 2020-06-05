@@ -17,23 +17,23 @@
 		27820B2324890DAD00075BDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27820B2124890DAD00075BDB /* Main.storyboard */; };
 		27820B2524890DAF00075BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27820B2424890DAF00075BDB /* Assets.xcassets */; };
 		27820B2824890DAF00075BDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27820B2624890DAF00075BDB /* LaunchScreen.storyboard */; };
-		27C00DEF248A6E8000014A9C /* NFCNDEFReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00DE3248A6E8000014A9C /* NFCNDEFReader.m */; };
-		27C00DF0248A6E8000014A9C /* NFCTagReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00DE6248A6E8000014A9C /* NFCTagReader.m */; };
-		27C00DF1248A6E8000014A9C /* NFCReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00DE9248A6E8000014A9C /* NFCReader.m */; };
-		27C00DF2248A6E8000014A9C /* NFCNDEFWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00DEC248A6E8000014A9C /* NFCNDEFWriter.m */; };
-		27C00DF3248A6E8000014A9C /* NFCReaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00DEE248A6E8000014A9C /* NFCReaderWriter.m */; };
-		27C00DF4248A6ED400014A9C /* NFCReaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00DEE248A6E8000014A9C /* NFCReaderWriter.m */; };
-		27C00DF5248A6ED400014A9C /* NFCReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00DE9248A6E8000014A9C /* NFCReader.m */; };
-		27C00DF6248A6ED400014A9C /* NFCNDEFReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00DE3248A6E8000014A9C /* NFCNDEFReader.m */; };
-		27C00DF7248A6ED400014A9C /* NFCNDEFWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00DEC248A6E8000014A9C /* NFCNDEFWriter.m */; };
-		27C00DF8248A6ED400014A9C /* NFCTagReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00DE6248A6E8000014A9C /* NFCTagReader.m */; };
-		27C00DF9248A6EEC00014A9C /* NFCConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C00DE7248A6E8000014A9C /* NFCConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C00DFA248A6EEC00014A9C /* NFCReaderWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C00DE8248A6E8000014A9C /* NFCReaderWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C00DFB248A6EEC00014A9C /* NFCReaderDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C00DEB248A6E8000014A9C /* NFCReaderDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C00DFC248A6EEC00014A9C /* NFCReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C00DE4248A6E8000014A9C /* NFCReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C00DFD248A6EEC00014A9C /* NFCNDEFReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C00DEA248A6E8000014A9C /* NFCNDEFReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C00DFE248A6EEC00014A9C /* NFCNDEFWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C00DE5248A6E8000014A9C /* NFCNDEFWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C00DFF248A6EEC00014A9C /* NFCTagReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C00DED248A6E8000014A9C /* NFCTagReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27C00E0E248A985800014A9C /* NFCNDEFReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00E02248A985800014A9C /* NFCNDEFReader.m */; };
+		27C00E0F248A985800014A9C /* NFCTagReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00E05248A985800014A9C /* NFCTagReader.m */; };
+		27C00E10248A985800014A9C /* NFCReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00E08248A985800014A9C /* NFCReader.m */; };
+		27C00E11248A985800014A9C /* NFCNDEFWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00E0B248A985800014A9C /* NFCNDEFWriter.m */; };
+		27C00E12248A985800014A9C /* NFCReaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00E0D248A985800014A9C /* NFCReaderWriter.m */; };
+		27C00E13248A98DB00014A9C /* NFCReaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00E0D248A985800014A9C /* NFCReaderWriter.m */; };
+		27C00E14248A98DB00014A9C /* NFCReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00E08248A985800014A9C /* NFCReader.m */; };
+		27C00E15248A98DB00014A9C /* NFCNDEFReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00E02248A985800014A9C /* NFCNDEFReader.m */; };
+		27C00E16248A98DB00014A9C /* NFCNDEFWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00E0B248A985800014A9C /* NFCNDEFWriter.m */; };
+		27C00E17248A98DB00014A9C /* NFCTagReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C00E05248A985800014A9C /* NFCTagReader.m */; };
+		27C00E18248A98F000014A9C /* NFCConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C00E06248A985800014A9C /* NFCConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27C00E19248A98F000014A9C /* NFCReaderDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C00E0A248A985800014A9C /* NFCReaderDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27C00E1A248A98F000014A9C /* NFCReaderWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C00E07248A985800014A9C /* NFCReaderWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27C00E1B248A98F000014A9C /* NFCReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C00E03248A985800014A9C /* NFCReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27C00E1C248A98F000014A9C /* NFCNDEFReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C00E09248A985800014A9C /* NFCNDEFReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27C00E1D248A98F000014A9C /* NFCNDEFWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C00E04248A985800014A9C /* NFCNDEFWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27C00E1E248A98F000014A9C /* NFCTagReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C00E0C248A985800014A9C /* NFCTagReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,18 +77,18 @@
 		27820B2924890DAF00075BDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27820B2F248913AC00075BDB /* NFCReaderWriterDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NFCReaderWriterDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		27820B442489144500075BDB /* NFCReaderWriterDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NFCReaderWriterDemo.entitlements; sourceTree = "<group>"; };
-		27C00DE3248A6E8000014A9C /* NFCNDEFReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCNDEFReader.m; sourceTree = "<group>"; };
-		27C00DE4248A6E8000014A9C /* NFCReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCReader.h; sourceTree = "<group>"; };
-		27C00DE5248A6E8000014A9C /* NFCNDEFWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCNDEFWriter.h; sourceTree = "<group>"; };
-		27C00DE6248A6E8000014A9C /* NFCTagReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCTagReader.m; sourceTree = "<group>"; };
-		27C00DE7248A6E8000014A9C /* NFCConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCConstants.h; sourceTree = "<group>"; };
-		27C00DE8248A6E8000014A9C /* NFCReaderWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCReaderWriter.h; sourceTree = "<group>"; };
-		27C00DE9248A6E8000014A9C /* NFCReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCReader.m; sourceTree = "<group>"; };
-		27C00DEA248A6E8000014A9C /* NFCNDEFReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCNDEFReader.h; sourceTree = "<group>"; };
-		27C00DEB248A6E8000014A9C /* NFCReaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCReaderDelegate.h; sourceTree = "<group>"; };
-		27C00DEC248A6E8000014A9C /* NFCNDEFWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCNDEFWriter.m; sourceTree = "<group>"; };
-		27C00DED248A6E8000014A9C /* NFCTagReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCTagReader.h; sourceTree = "<group>"; };
-		27C00DEE248A6E8000014A9C /* NFCReaderWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCReaderWriter.m; sourceTree = "<group>"; };
+		27C00E02248A985800014A9C /* NFCNDEFReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCNDEFReader.m; sourceTree = "<group>"; };
+		27C00E03248A985800014A9C /* NFCReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCReader.h; sourceTree = "<group>"; };
+		27C00E04248A985800014A9C /* NFCNDEFWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCNDEFWriter.h; sourceTree = "<group>"; };
+		27C00E05248A985800014A9C /* NFCTagReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCTagReader.m; sourceTree = "<group>"; };
+		27C00E06248A985800014A9C /* NFCConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCConstants.h; sourceTree = "<group>"; };
+		27C00E07248A985800014A9C /* NFCReaderWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCReaderWriter.h; sourceTree = "<group>"; };
+		27C00E08248A985800014A9C /* NFCReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCReader.m; sourceTree = "<group>"; };
+		27C00E09248A985800014A9C /* NFCNDEFReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCNDEFReader.h; sourceTree = "<group>"; };
+		27C00E0A248A985800014A9C /* NFCReaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCReaderDelegate.h; sourceTree = "<group>"; };
+		27C00E0B248A985800014A9C /* NFCNDEFWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCNDEFWriter.m; sourceTree = "<group>"; };
+		27C00E0C248A985800014A9C /* NFCTagReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCTagReader.h; sourceTree = "<group>"; };
+		27C00E0D248A985800014A9C /* NFCReaderWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCReaderWriter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +140,7 @@
 		27820B0F24890DAD00075BDB = {
 			isa = PBXGroup;
 			children = (
-				27C00DE2248A6E8000014A9C /* Sources */,
+				27C00E00248A985800014A9C /* Sources */,
 				27820B1A24890DAD00075BDB /* NFCReaderWriterDemo */,
 				27537DDF2489F0AC00B5DBB1 /* NFCReaderWriter */,
 				2753AB302489FEA2004333A1 /* JLNFCReaderWriter */,
@@ -174,23 +174,31 @@
 			path = NFCReaderWriterDemo;
 			sourceTree = "<group>";
 		};
-		27C00DE2248A6E8000014A9C /* Sources */ = {
+		27C00E00248A985800014A9C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				27C00DE7248A6E8000014A9C /* NFCConstants.h */,
-				27C00DE8248A6E8000014A9C /* NFCReaderWriter.h */,
-				27C00DEE248A6E8000014A9C /* NFCReaderWriter.m */,
-				27C00DEB248A6E8000014A9C /* NFCReaderDelegate.h */,
-				27C00DE4248A6E8000014A9C /* NFCReader.h */,
-				27C00DE9248A6E8000014A9C /* NFCReader.m */,
-				27C00DEA248A6E8000014A9C /* NFCNDEFReader.h */,
-				27C00DE3248A6E8000014A9C /* NFCNDEFReader.m */,
-				27C00DE5248A6E8000014A9C /* NFCNDEFWriter.h */,
-				27C00DEC248A6E8000014A9C /* NFCNDEFWriter.m */,
-				27C00DED248A6E8000014A9C /* NFCTagReader.h */,
-				27C00DE6248A6E8000014A9C /* NFCTagReader.m */,
+				27C00E01248A985800014A9C /* NFCReaderWriter */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		27C00E01248A985800014A9C /* NFCReaderWriter */ = {
+			isa = PBXGroup;
+			children = (
+				27C00E06248A985800014A9C /* NFCConstants.h */,
+				27C00E0A248A985800014A9C /* NFCReaderDelegate.h */,
+				27C00E07248A985800014A9C /* NFCReaderWriter.h */,
+				27C00E0D248A985800014A9C /* NFCReaderWriter.m */,
+				27C00E03248A985800014A9C /* NFCReader.h */,
+				27C00E08248A985800014A9C /* NFCReader.m */,
+				27C00E09248A985800014A9C /* NFCNDEFReader.h */,
+				27C00E02248A985800014A9C /* NFCNDEFReader.m */,
+				27C00E04248A985800014A9C /* NFCNDEFWriter.h */,
+				27C00E0B248A985800014A9C /* NFCNDEFWriter.m */,
+				27C00E0C248A985800014A9C /* NFCTagReader.h */,
+				27C00E05248A985800014A9C /* NFCTagReader.m */,
+			);
+			path = NFCReaderWriter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,13 +209,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2753AB332489FEA2004333A1 /* JLNFCReaderWriter.h in Headers */,
-				27C00DF9248A6EEC00014A9C /* NFCConstants.h in Headers */,
-				27C00DFA248A6EEC00014A9C /* NFCReaderWriter.h in Headers */,
-				27C00DFB248A6EEC00014A9C /* NFCReaderDelegate.h in Headers */,
-				27C00DFC248A6EEC00014A9C /* NFCReader.h in Headers */,
-				27C00DFD248A6EEC00014A9C /* NFCNDEFReader.h in Headers */,
-				27C00DFE248A6EEC00014A9C /* NFCNDEFWriter.h in Headers */,
-				27C00DFF248A6EEC00014A9C /* NFCTagReader.h in Headers */,
+				27C00E18248A98F000014A9C /* NFCConstants.h in Headers */,
+				27C00E19248A98F000014A9C /* NFCReaderDelegate.h in Headers */,
+				27C00E1A248A98F000014A9C /* NFCReaderWriter.h in Headers */,
+				27C00E1B248A98F000014A9C /* NFCReader.h in Headers */,
+				27C00E1C248A98F000014A9C /* NFCNDEFReader.h in Headers */,
+				27C00E1D248A98F000014A9C /* NFCNDEFWriter.h in Headers */,
+				27C00E1E248A98F000014A9C /* NFCTagReader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,11 +322,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27C00DF4248A6ED400014A9C /* NFCReaderWriter.m in Sources */,
-				27C00DF5248A6ED400014A9C /* NFCReader.m in Sources */,
-				27C00DF6248A6ED400014A9C /* NFCNDEFReader.m in Sources */,
-				27C00DF7248A6ED400014A9C /* NFCNDEFWriter.m in Sources */,
-				27C00DF8248A6ED400014A9C /* NFCTagReader.m in Sources */,
+				27C00E13248A98DB00014A9C /* NFCReaderWriter.m in Sources */,
+				27C00E14248A98DB00014A9C /* NFCReader.m in Sources */,
+				27C00E15248A98DB00014A9C /* NFCNDEFReader.m in Sources */,
+				27C00E16248A98DB00014A9C /* NFCNDEFWriter.m in Sources */,
+				27C00E17248A98DB00014A9C /* NFCTagReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,12 +334,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C00E10248A985800014A9C /* NFCReader.m in Sources */,
 				27820B2024890DAD00075BDB /* ViewController.swift in Sources */,
-				27C00DF1248A6E8000014A9C /* NFCReader.m in Sources */,
-				27C00DEF248A6E8000014A9C /* NFCNDEFReader.m in Sources */,
-				27C00DF2248A6E8000014A9C /* NFCNDEFWriter.m in Sources */,
-				27C00DF3248A6E8000014A9C /* NFCReaderWriter.m in Sources */,
-				27C00DF0248A6E8000014A9C /* NFCTagReader.m in Sources */,
+				27C00E0E248A985800014A9C /* NFCNDEFReader.m in Sources */,
+				27C00E12248A985800014A9C /* NFCReaderWriter.m in Sources */,
+				27C00E0F248A985800014A9C /* NFCTagReader.m in Sources */,
+				27C00E11248A985800014A9C /* NFCNDEFWriter.m in Sources */,
 				27820B1C24890DAD00075BDB /* AppDelegate.swift in Sources */,
 				27820B1E24890DAD00075BDB /* SceneDelegate.swift in Sources */,
 			);

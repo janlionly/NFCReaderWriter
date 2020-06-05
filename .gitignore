@@ -45,8 +45,12 @@ playground.xcworkspace
 # Xcode automatically generates this directory with a .xcworkspacedata file and xcuserdata
 # hence it is not needed unless you have added a package configuration file to your project
 # .swiftpm
+.DS_Store
+/.build
+/Packages
+/*.xcodeproj
+xcuserdata/
 
-.build/
 
 # CocoaPods
 #
