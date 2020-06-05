@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "27537DDD2489F0AC00B5DBB1"
-               BuildableName = "NFCReaderWriter.framework"
-               BlueprintName = "NFCReaderWriter"
+               BlueprintIdentifier = "2753AB2E2489FEA2004333A1"
+               BuildableName = "JLNFCReaderWriter.framework"
+               BlueprintName = "JLNFCReaderWriter"
                ReferencedContainer = "container:NFCReaderWriterDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "27537DDD2489F0AC00B5DBB1"
-            BuildableName = "NFCReaderWriter.framework"
-            BlueprintName = "NFCReaderWriter"
+            BlueprintIdentifier = "2753AB2E2489FEA2004333A1"
+            BuildableName = "JLNFCReaderWriter.framework"
+            BlueprintName = "JLNFCReaderWriter"
             ReferencedContainer = "container:NFCReaderWriterDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

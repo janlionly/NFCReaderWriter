@@ -42,54 +42,54 @@ extension ViewController: NFCReaderDelegate {
             readerWriter.end()
         }
         
-        func reader(_ session: NFCReader, didDetectNDEFs messages: [NFCNDEFMessage]) {
-            var recordInfos = ""
-            
-            for message in messages {
-                for (i, record) in message.records.enumerated() {
-                    recordInfos += "Record(\(i + 1)):\n"
-                    recordInfos += "Type name format: \(record.typeNameFormat.rawValue)\n"
-                    recordInfos += "Type: \(record.type as NSData)\n"
-                    recordInfos += "Identifier: \(record.identifier)\n"
-                    recordInfos += "Length: \(message.length)\n"
-                    
-                    if let string = String(data: record.payload, encoding: .ascii) {
-                        recordInfos += "Payload content:\(string)\n"
-                    }
-                    recordInfos += "Payload raw data: \(record.payload as NSData)\n\n"
+    func reader(_ session: NFCReader, didDetectNDEFs messages: [NFCNDEFMessage]) {
+        var recordInfos = ""
+        
+        for message in messages {
+            for (i, record) in message.records.enumerated() {
+                recordInfos += "Record(\(i + 1)):\n"
+                recordInfos += "Type name format: \(record.typeNameFormat.rawValue)\n"
+                recordInfos += "Type: \(record.type as NSData)\n"
+                recordInfos += "Identifier: \(record.identifier)\n"
+                recordInfos += "Length: \(message.length)\n"
+                
+                if let string = String(data: record.payload, encoding: .ascii) {
+                    recordInfos += "Payload content:\(string)\n"
                 }
+                recordInfos += "Payload raw data: \(record.payload as NSData)\n\n"
             }
-            DispatchQueue.main.async {
-                self.textView.text = recordInfos
-            }
-            
-            readerWriter.end()
+        }
+        DispatchQueue.main.async {
+            self.textView.text = recordInfos
         }
         
-        func reader(_ session: NFCReader, didDetect tags: [NFCNDEFTag]) {
-            print("did detect tags")
-            
-            var payloadData = Data([0x02])
-            let urls = ["apple.com", "google.com", "facebook.com"]
-            payloadData.append(urls[Int.random(in: 0..<urls.count)].data(using: .utf8)!)
+        readerWriter.end()
+    }
+        
+    func reader(_ session: NFCReader, didDetect tags: [NFCNDEFTag]) {
+        print("did detect tags")
+        
+        var payloadData = Data([0x02])
+        let urls = ["apple.com", "google.com", "facebook.com"]
+        payloadData.append(urls[Int.random(in: 0..<urls.count)].data(using: .utf8)!)
 
-            let payload = NFCNDEFPayload.init(
-                format: NFCTypeNameFormat.nfcWellKnown,
-                type: "U".data(using: .utf8)!,
-                identifier: Data.init(count: 0),
-                payload: payloadData,
-                chunkSize: 0)
+        let payload = NFCNDEFPayload.init(
+            format: NFCTypeNameFormat.nfcWellKnown,
+            type: "U".data(using: .utf8)!,
+            identifier: Data.init(count: 0),
+            payload: payloadData,
+            chunkSize: 0)
 
-            let message = NFCNDEFMessage(records: [payload])
+        let message = NFCNDEFMessage(records: [payload])
 
-            readerWriter.write(message, to: tags.first!) { (error) in
-                if let err = error {
-                    print("ERR:\(err)")
-                } else {
-                    print("write success")
-                }
-                self.readerWriter.end()
+        readerWriter.write(message, to: tags.first!) { (error) in
+            if let err = error {
+                print("ERR:\(err)")
+            } else {
+                print("write success")
             }
+            self.readerWriter.end()
         }
+    }
 }
 
