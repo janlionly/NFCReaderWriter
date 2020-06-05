@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NFCReaderWriterDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ad7-g9-cx7">
+                                <rect key="frame" x="189.5" y="103" width="35" height="30"/>
+                                <state key="normal" title="Read"/>
+                                <connections>
+                                    <action selector="readButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nhh-gt-bb5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igy-wD-mIK">
+                                <rect key="frame" x="131" y="157" width="152" height="30"/>
+                                <state key="normal" title="Write test data to chip"/>
+                                <connections>
+                                    <action selector="writeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x25-xO-8Y1"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6eE-hR-scq">
+                                <rect key="frame" x="56.5" y="257" width="301" height="323"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="323" id="ALz-iP-5Ok"/>
+                                    <constraint firstAttribute="width" constant="301" id="DVx-ce-nSe"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read chip's data as follow:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfM-Ov-hWu">
+                                <rect key="frame" x="56.5" y="235" width="182" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Igy-wD-mIK" firstAttribute="top" secondItem="ad7-g9-cx7" secondAttribute="bottom" constant="24" id="5b3-BO-7SA"/>
+                            <constraint firstItem="6eE-hR-scq" firstAttribute="top" secondItem="cfM-Ov-hWu" secondAttribute="bottom" constant="4" id="FFr-f8-efs"/>
+                            <constraint firstItem="6eE-hR-scq" firstAttribute="top" secondItem="Igy-wD-mIK" secondAttribute="bottom" constant="70" id="Ju1-gs-KMD"/>
+                            <constraint firstItem="cfM-Ov-hWu" firstAttribute="leading" secondItem="6eE-hR-scq" secondAttribute="leading" id="R2v-Mw-or5"/>
+                            <constraint firstItem="6eE-hR-scq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="djR-bY-Wg9"/>
+                            <constraint firstItem="ad7-g9-cx7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gqk-GD-Sa6"/>
+                            <constraint firstItem="Igy-wD-mIK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oPA-Ff-7f3"/>
+                            <constraint firstItem="ad7-g9-cx7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="59" id="wJU-Q0-D0S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="6eE-hR-scq" id="EWv-c8-dNw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="121.875"/>
+        </scene>
+    </scenes>
+</document>
