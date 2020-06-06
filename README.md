@@ -20,15 +20,11 @@ github "janlionly/NFCReaderWriter"
 ```
 
 ### Swift Package Manager
-1. Add the following to your `Package.swift`:
-	```swift
-	.package(url: "https://github.com/janlionly/NFCReaderWriter.git", .upToNextMajor(from: "1.0.0")),
-	```
-2. Next, add `NFCReaderWriter` to your App targets dependencies like so:
-	```swift
-	.target(name: "App", dependencies: ["NFCReaderWriter"]),
-	```
-3. Then open your project in Xcode 11+ (SwiftPM).
+- iOS: Open Xcode, File->Swift Packages, search input **https://github.com/janlionly/NFCReaderWriter.git**, and then select Version Up to Next Major **1.0.5** < .
+- Or add dependencies in your `Package.swift`:
+```swift
+.package(url: "https://github.com/janlionly/NFCReaderWriter.git", .upToNextMajor(from: "1.0.5")),
+```
 
 ## Usage
 1. Set your provisioning profile to support for **Near Field Communication Tag Reading**;
