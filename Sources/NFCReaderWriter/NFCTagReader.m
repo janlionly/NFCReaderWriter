@@ -50,7 +50,6 @@
 }
 
 - (void)tagReaderSession:(NFCTagReaderSession *)session didDetectTags:(NSArray<__kindof id<NFCTag>> *)tags {
-    
     if ([self.delegate respondsToSelector:@selector(reader:didDetectTags:)]) {
         [self.delegate reader:self didDetectTags:tags];
     }
@@ -64,7 +63,23 @@
 //    NSLog(@"result---%@",string);
 }
 
-- (NSString *)convertDataBytesToHex:(NSData *)dataBytes {
+- (NSData *)tagIdentifierWithTag:(id<NFCTag>)tag {
+    switch (tag.type) {
+        case NFCTagTypeISO15693:
+            return [tag asNFCISO15693Tag].identifier;
+        case NFCTagTypeFeliCa:
+            return [tag asNFCFeliCaTag].currentIDm;
+        case NFCTagTypeISO7816Compatible:
+            return [tag asNFCISO7816Tag].identifier;
+        case NFCTagTypeMiFare:
+            return [tag asNFCMiFareTag].identifier;
+            
+        default:
+            return nil;
+    }
+}
+
+- (NSString *)convertDataBytesToHex:(NSData *)dataBytes isAddColons:(BOOL)isAddColons {
     if (!dataBytes || [dataBytes length] == 0) {
         return @"";
     }
@@ -73,10 +88,15 @@
         unsigned char *dataBytes = (unsigned char *)bytes;
         for (NSInteger i = 0; i < byteRange.length; i ++) {
             NSString *singleHexStr = [NSString stringWithFormat:@"%x", (dataBytes[i]) & 0xff];
+            NSString *seporator = isAddColons ? @":" : @"";
+            if (i == byteRange.length - 1) {
+                seporator = @"";
+            }
+            
             if ([singleHexStr length] == 2) {
-                [hexStr appendString:singleHexStr];
+                [hexStr appendFormat:@"%@%@", [singleHexStr uppercaseString], seporator];
             } else {
-                [hexStr appendFormat:@"0%@", singleHexStr];
+                [hexStr appendFormat:@"0%@%@", [singleHexStr uppercaseString], seporator];
             }
         }
     }];

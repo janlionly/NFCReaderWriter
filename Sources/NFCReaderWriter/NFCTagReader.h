@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NFCTagReader : NFCReader
 
 - (void)writeMessage:(NFCNDEFMessage *)message toTag:(nonnull id<NFCTag>)tag connectHandler:(nonnull void(^)(NSError *_Nullable error))connectHandler writeHandler:(nonnull void(^)(NFCNDEFStatus status, NSUInteger capacity, NSError *_Nullable error))writeHandler;
+- (NSData *)tagIdentifierWithTag:(nonnull id<NFCTag>)tag;
+- (NSString *)convertDataBytesToHex:(NSData *)dataBytes isAddColons:(BOOL)isAddColons;
 
 @end
 

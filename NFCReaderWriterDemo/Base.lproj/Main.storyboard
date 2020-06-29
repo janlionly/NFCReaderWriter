@@ -16,21 +16,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ad7-g9-cx7">
-                                <rect key="frame" x="189.5" y="103" width="35" height="30"/>
-                                <state key="normal" title="Read"/>
+                                <rect key="frame" x="163" y="64" width="88" height="30"/>
+                                <state key="normal" title="Read(iOS 11)"/>
                                 <connections>
                                     <action selector="readButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nhh-gt-bb5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igy-wD-mIK">
-                                <rect key="frame" x="131" y="157" width="152" height="30"/>
-                                <state key="normal" title="Write test data to chip"/>
+                                <rect key="frame" x="103.5" y="114" width="207" height="30"/>
+                                <state key="normal" title="Write test data to chip(iOS 13)"/>
                                 <connections>
                                     <action selector="writeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x25-xO-8Y1"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6eE-hR-scq">
-                                <rect key="frame" x="56.5" y="257" width="301" height="323"/>
+                                <rect key="frame" x="56.5" y="184" width="301" height="323"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="323" id="ALz-iP-5Ok"/>
@@ -41,26 +41,48 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read chip's data as follow:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfM-Ov-hWu">
-                                <rect key="frame" x="56.5" y="235" width="182" height="18"/>
+                                <rect key="frame" x="56.5" y="162" width="182" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93Z-2U-54h">
+                                <rect key="frame" x="138.5" y="515" width="137" height="30"/>
+                                <state key="normal" title="Read Tag ID(iOS 13)"/>
+                                <connections>
+                                    <action selector="readTagIDButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C5d-Hh-uUr"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read Tag Identifier:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F68-Iu-Gju">
+                                <rect key="frame" x="10" y="555" width="394" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="cAY-GE-BcW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Igy-wD-mIK" firstAttribute="top" secondItem="ad7-g9-cx7" secondAttribute="bottom" constant="24" id="5b3-BO-7SA"/>
+                            <constraint firstItem="93Z-2U-54h" firstAttribute="top" secondItem="6eE-hR-scq" secondAttribute="bottom" constant="8" id="3xc-vj-PxI"/>
+                            <constraint firstItem="Igy-wD-mIK" firstAttribute="top" secondItem="ad7-g9-cx7" secondAttribute="bottom" constant="20" id="5b3-BO-7SA"/>
+                            <constraint firstItem="F68-Iu-Gju" firstAttribute="top" secondItem="93Z-2U-54h" secondAttribute="bottom" constant="10" id="Cco-Qy-pZc"/>
                             <constraint firstItem="6eE-hR-scq" firstAttribute="top" secondItem="cfM-Ov-hWu" secondAttribute="bottom" constant="4" id="FFr-f8-efs"/>
-                            <constraint firstItem="6eE-hR-scq" firstAttribute="top" secondItem="Igy-wD-mIK" secondAttribute="bottom" constant="70" id="Ju1-gs-KMD"/>
+                            <constraint firstItem="6eE-hR-scq" firstAttribute="top" secondItem="Igy-wD-mIK" secondAttribute="bottom" constant="40" id="Ju1-gs-KMD"/>
+                            <constraint firstItem="F68-Iu-Gju" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="QlE-ZJ-3wF"/>
                             <constraint firstItem="cfM-Ov-hWu" firstAttribute="leading" secondItem="6eE-hR-scq" secondAttribute="leading" id="R2v-Mw-or5"/>
+                            <constraint firstItem="93Z-2U-54h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y3g-sD-uhq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F68-Iu-Gju" secondAttribute="trailing" constant="10" id="bsr-Q8-nGr"/>
                             <constraint firstItem="6eE-hR-scq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="djR-bY-Wg9"/>
                             <constraint firstItem="ad7-g9-cx7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gqk-GD-Sa6"/>
                             <constraint firstItem="Igy-wD-mIK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oPA-Ff-7f3"/>
-                            <constraint firstItem="ad7-g9-cx7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="59" id="wJU-Q0-D0S"/>
+                            <constraint firstItem="ad7-g9-cx7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="wJU-Q0-D0S"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="tagIdLabel" destination="F68-Iu-Gju" id="VF2-OE-hK5"/>
                         <outlet property="textView" destination="6eE-hR-scq" id="EWv-c8-dNw"/>
                     </connections>
                 </viewController>

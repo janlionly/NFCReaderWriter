@@ -10,8 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var tagIdLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     let readerWriter = NFCReaderWriter.sharedInstance()
+    var isWrite: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,15 +22,23 @@ class ViewController: UIViewController {
     // MARK: Actions
     // iOS 11
     @IBAction func readButtonTapped(_ sender: Any) {
-        readerWriter.newReaderSession(with: self, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC Card for read")
+        readerWriter.newReaderSession(with: self, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for read")
         readerWriter.begin()
     }
     
     // iOS 13
     @IBAction func writeButtonTapped(_ sender: Any) {
-        readerWriter.newWriterSession(with: self, isLegacy: true, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC Card for write")
+        readerWriter.newWriterSession(with: self, isLegacy: true, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for write")
         readerWriter.begin()
+        isWrite = true
     }
+    
+    @IBAction func readTagIDButtonTapped(_ sender: Any) {
+        readerWriter.newWriterSession(with: self, isLegacy: false, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for read tag identifier")
+        readerWriter.begin()
+        isWrite = false
+    }
+    
 }
 
 extension ViewController: NFCReaderDelegate {
@@ -69,26 +79,39 @@ extension ViewController: NFCReaderDelegate {
     func reader(_ session: NFCReader, didDetect tags: [NFCNDEFTag]) {
         print("did detect tags")
         
-        var payloadData = Data([0x02])
-        let urls = ["apple.com", "google.com", "facebook.com"]
-        payloadData.append(urls[Int.random(in: 0..<urls.count)].data(using: .utf8)!)
+        if isWrite {
+            var payloadData = Data([0x02])
+            let urls = ["apple.com", "google.com", "facebook.com"]
+            payloadData.append(urls[Int.random(in: 0..<urls.count)].data(using: .utf8)!)
 
-        let payload = NFCNDEFPayload.init(
-            format: NFCTypeNameFormat.nfcWellKnown,
-            type: "U".data(using: .utf8)!,
-            identifier: Data.init(count: 0),
-            payload: payloadData,
-            chunkSize: 0)
+            let payload = NFCNDEFPayload.init(
+                format: NFCTypeNameFormat.nfcWellKnown,
+                type: "U".data(using: .utf8)!,
+                identifier: Data.init(count: 0),
+                payload: payloadData,
+                chunkSize: 0)
 
-        let message = NFCNDEFMessage(records: [payload])
+            let message = NFCNDEFMessage(records: [payload])
 
-        readerWriter.write(message, to: tags.first!) { (error) in
-            if let err = error {
-                print("ERR:\(err)")
-            } else {
-                print("write success")
+            readerWriter.write(message, to: tags.first!) { (error) in
+                if let err = error {
+                    print("ERR:\(err)")
+                } else {
+                    print("write success")
+                }
+                self.readerWriter.end()
             }
-            self.readerWriter.end()
+        } else {
+            if let tag = tags.first {
+                let tagId = readerWriter.tagIdentifier(with: tag as! __NFCTag)
+                let hex = readerWriter.hexString(with: tagId, isAddColons: false)
+                DispatchQueue.main.async {
+                    self.tagIdLabel.text = "Read Tag Identifier:\n\(hex)"
+                }
+                
+                print("tagid:\(tagId as NSData) hex:\(hex)")
+                self.readerWriter.end()
+            }
         }
     }
 }

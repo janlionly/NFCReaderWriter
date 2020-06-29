@@ -86,6 +86,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)parseNFCError:(NSError *)error;
 
+- (NSData *)tagIdentifierWithTag:(nonnull id<NFCTag>)tag;
+- (NSString *)hexStringWithData:(NSData *)data isAddColons:(BOOL)isAddColons;
+
 
 @end
 

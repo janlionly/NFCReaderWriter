@@ -28,8 +28,16 @@ github "janlionly/NFCReaderWriter"
 
 ## Usage
 1. Set your provisioning profile to support for **Near Field Communication Tag Reading**;
+
 2. Open your project target, on **Signing & Capabilities** tab, add the Capability of **Near Field Communication Tag Reading**;
+
 3. Remember to add **NFCReaderUsageDescription** key for descriptions to your Info.plist.
+
+4. Support for read tag identifier(iOS 13), you should add your NFC tag type descriptions to your Info.plist. 
+
+   (eg: like **com.apple.developer.nfc.readersession.felica.systemcodes**, **com.apple.developer.nfc.readersession.iso7816.select-identifiers**)
+
+**More information please run demo above.**
 
 ```swift
 /// NFC Reader(iOS 11):
@@ -48,33 +56,47 @@ func reader(_ session: NFCReader, didDetectNDEFs messages: [NFCNDEFMessage]) {
   readerWriter.end()
 }
 
+/// NFC Tag Reader(iOS 13)
+readerWriter.newWriterSession(with: self, isLegacy: false, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for read tag identifier")
+readerWriter.begin()
+
 /// NFC Writer(iOS 13):
 // every time write data to NFC chip, open a new session to write
 readerWriter.newWriterSession(with: self, isLegacy: true, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC Card for write")
 readerWriter.begin()
 
-// implement NFCReaderDelegate to write data to NFC chip
+// implement NFCReaderDelegate to write data to NFC chip or read tag identifier
 func reader(_ session: NFCReader, didDetect tags: [NFCNDEFTag]) {
-	// here for test data
-  var payloadData = Data([0x02])
-  let urls = ["apple.com", "google.com", "facebook.com"]
-  payloadData.append(urls[Int.random(in: 0..<urls.count)].data(using: .utf8)!)
+	// here for write test data
+  if isWrite {
+    var payloadData = Data([0x02])
+    let urls = ["apple.com", "google.com", "facebook.com"]
+    payloadData.append(urls[Int.random(in: 0..<urls.count)].data(using: .utf8)!)
 
-  let payload = NFCNDEFPayload.init(
-    format: NFCTypeNameFormat.nfcWellKnown,
-    type: "U".data(using: .utf8)!,
-    identifier: Data.init(count: 0),
-    payload: payloadData,
-    chunkSize: 0)
-  let message = NFCNDEFMessage(records: [payload])
-  
-  readerWriter.write(message, to: tags.first!) { (error) in
-      if let err = error {
-          print("ERR:\(err)")
-      } else {
-          print("write success")
-      }
+    let payload = NFCNDEFPayload.init(
+      format: NFCTypeNameFormat.nfcWellKnown,
+      type: "U".data(using: .utf8)!,
+      identifier: Data.init(count: 0),
+      payload: payloadData,
+      chunkSize: 0)
+
+    let message = NFCNDEFMessage(records: [payload])
+
+    readerWriter.write(message, to: tags.first!) { (error) in
+        if let err = error {
+            print("ERR:\(err)")
+        } else {
+            print("write success")
+        }
+        self.readerWriter.end()
+     }
+  } else { // read tag identifier
+    if let tag = tags.first {
+      let tagId = readerWriter.tagIdentifier(with: tag as! __NFCTag)
+      let hex = readerWriter.hexString(with: tagId, isAddColons: false)
+      print("tagid:\(tagId as NSData) hex:\(hex)")
       self.readerWriter.end()
+    }
   }
 }
 

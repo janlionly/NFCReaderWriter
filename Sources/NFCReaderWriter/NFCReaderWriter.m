@@ -174,5 +174,21 @@
     }
 }
 
+- (NSData *)tagIdentifierWithTag:(id<NFCTag>)tag {
+    if ([self.reader isKindOfClass:[NFCTagReader class]]) {
+        NFCTagReader *tagReader = (NFCTagReader *)self.reader;
+        return [tagReader tagIdentifierWithTag:tag];
+    }
+    return nil;
+}
+
+- (NSString *)hexStringWithData:(NSData *)data isAddColons:(BOOL)isAddColons {
+    if ([self.reader isKindOfClass:[NFCTagReader class]]) {
+        NFCTagReader *tagReader = (NFCTagReader *)self.reader;
+        return [tagReader convertDataBytesToHex:data isAddColons:isAddColons];
+    }
+    return nil;
+}
+
 
 @end
