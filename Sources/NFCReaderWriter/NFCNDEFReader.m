@@ -39,18 +39,10 @@
 
 // iOS 11
 - (void)readerSession:(NFCNDEFReaderSession *)session didDetectNDEFs:(NSArray<NFCNDEFMessage *> *)messages {
-    [self.delegate reader:self didDetectNDEFs:messages];
+    if ([self.delegate respondsToSelector:@selector(reader:didDetectNDEFs:)]) {
+        [self.delegate reader:self didDetectNDEFs:messages];
+    }
 }
-
-// iOS 13
-//- (void)readerSession:(NFCNDEFReaderSession *)session didDetectTags:(NSArray<__kindof id<NFCNDEFTag>> *)tags {
-//    [tags.firstObject queryNDEFStatusWithCompletionHandler:^(NFCNDEFStatus status, NSUInteger capacity, NSError * _Nullable error) {
-//        if (error != nil) {
-//            NSLog(@"failed to detect NDEF status");
-//        }
-//        NSLog(@"ReadOnly: %d", status == NFCNDEFStatusReadOnly);
-//    }];
-//}
 
 - (void)readerSessionDidBecomeActive:(NFCNDEFReaderSession *)session {
     

@@ -122,17 +122,17 @@ extension ViewController: NFCReaderDelegate {
         
     func reader(_ session: NFCReader, didDetectNDEFs messages: [NFCNDEFMessage]) {
         let  recordInfos = contentsForMessages(messages)
-        
+
         DispatchQueue.main.async {
             self.textView.text = recordInfos
         }
-        
+
         readerWriter.end()
     }
-        
+
     func reader(_ session: NFCReader, didDetect tags: [NFCNDEFTag]) {
         print("did detect tags")
-        
+
         var payloadData = Data([0x02])
         let urls = ["apple.com", "google.com", "facebook.com"]
         payloadData.append(urls[Int.random(in: 0..<urls.count)].data(using: .utf8)!)

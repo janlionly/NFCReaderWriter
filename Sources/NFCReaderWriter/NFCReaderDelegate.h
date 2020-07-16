@@ -26,19 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)reader:(NFCReader *)session didInvalidateWithError:(NSError *)error;
 
-/*!
- * @method reader:didDetectNDEFs:
- *
- * @param session   The session object used for tag detection.
- * @param messages  Array of @link NFCNDEFMessage @link/ objects.
- *
- * @discussion      Gets called when the reader detects NFC tag(s) with NDEF messages in the polling sequence.  Polling
- *                  is automatically restarted once the detected tag is removed from the reader's read range.  This method
- *                  is only get call if the optional -readerSession:didDetectTags: method is not
- *                  implemented.
- */
-- (void)reader:(NFCReader *)session didDetectNDEFs:(NSArray<NFCNDEFMessage *> *)messages;
-
 @optional
 
 /*!
@@ -62,12 +49,25 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)readerDidBecomeActive:(NFCReader *)session;
 
 /*!
+ * @method reader:didDetectNDEFs:
+ *
+ * @param session   The session object used for tag detection.
+ * @param messages  Array of @link NFCNDEFMessage @link/ objects.
+ *
+ * @discussion      Gets called when the reader detects NFC tag(s) with NDEF messages in the polling sequence.  Polling
+ *                  is automatically restarted once the detected tag is removed from the reader's read range.  This method
+ *                  is only get call if the optional -readerSession:didDetectTags: method is not
+ *                  implemented.
+ */
+- (void)reader:(NFCReader *)session didDetectNDEFs:(NSArray<NFCNDEFMessage *> *)messages API_AVAILABLE(ios(11.0)) API_UNAVAILABLE(watchos, macos, tvos);
+
+/*!
  * @method reader:didDetectTag:didDetectNDEF:
  *
  * @param session   The session object used for tag detection.
  * @param tag      NFCTag @link/ objects.
  */
-- (void)reader:(NFCReader *)session didDetectTag:(__kindof id<NFCTag>)tag didDetectNDEF:(NFCNDEFMessage *)message;
+- (void)reader:(NFCReader *)session didDetectTag:(__kindof id<NFCTag>)tag didDetectNDEF:(NFCNDEFMessage *)message API_AVAILABLE(ios(13.0)) API_UNAVAILABLE(watchos, macos, tvos);
 
 @end
 
