@@ -61,6 +61,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)readerDidBecomeActive:(NFCReader *)session;
 
+/*!
+ * @method reader:didDetectTag:didDetectNDEF:
+ *
+ * @param session   The session object used for tag detection.
+ * @param tag      NFCTag @link/ objects.
+ */
+- (void)reader:(NFCReader *)session didDetectTag:(__kindof id<NFCTag>)tag didDetectNDEF:(NFCNDEFMessage *)message;
+
 @end
 
 NS_ASSUME_NONNULL_END

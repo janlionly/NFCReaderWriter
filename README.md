@@ -20,10 +20,10 @@ github "janlionly/NFCReaderWriter"
 ```
 
 ### Swift Package Manager
-- iOS: Open Xcode, File->Swift Packages, search input **https://github.com/janlionly/NFCReaderWriter.git**, and then select Version Up to Next Major **1.0.5** < .
+- iOS: Open Xcode, File->Swift Packages, search input **https://github.com/janlionly/NFCReaderWriter.git**, and then select Version Up to Next Major **1.1.0** < .
 - Or add dependencies in your `Package.swift`:
 ```swift
-.package(url: "https://github.com/janlionly/NFCReaderWriter.git", .upToNextMajor(from: "1.0.5")),
+.package(url: "https://github.com/janlionly/NFCReaderWriter.git", .upToNextMajor(from: "1.1.0")),
 ```
 
 ## Usage
@@ -40,7 +40,9 @@ github "janlionly/NFCReaderWriter"
 **More information please run demo above.**
 
 ```swift
-/// NFC Reader(iOS 11):
+/// ----------------------
+/// 1. NFC Reader(iOS 11):
+/// ----------------------
 // every time read NFC chip's data, open a new session to detect
 readerWriter.newReaderSession(with: self, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC Card for read")
 readerWriter.begin()
@@ -56,19 +58,16 @@ func reader(_ session: NFCReader, didDetectNDEFs messages: [NFCNDEFMessage]) {
   readerWriter.end()
 }
 
-/// NFC Tag Reader(iOS 13)
-readerWriter.newWriterSession(with: self, isLegacy: false, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for read tag identifier")
-readerWriter.begin()
-
-/// NFC Writer(iOS 13):
+/// ----------------------
+/// 2. NFC Writer(iOS 13):
+/// ----------------------
 // every time write data to NFC chip, open a new session to write
 readerWriter.newWriterSession(with: self, isLegacy: true, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC Card for write")
 readerWriter.begin()
 
-// implement NFCReaderDelegate to write data to NFC chip or read tag identifier
+// implement NFCReaderDelegate to write data to NFC chip
 func reader(_ session: NFCReader, didDetect tags: [NFCNDEFTag]) {
-	// here for write test data
-  if isWrite {
+	  // here for write test data
     var payloadData = Data([0x02])
     let urls = ["apple.com", "google.com", "facebook.com"]
     payloadData.append(urls[Int.random(in: 0..<urls.count)].data(using: .utf8)!)
@@ -90,17 +89,29 @@ func reader(_ session: NFCReader, didDetect tags: [NFCNDEFTag]) {
         }
         self.readerWriter.end()
      }
-  } else { // read tag identifier
-    if let tag = tags.first {
-      let tagId = readerWriter.tagIdentifier(with: tag as! __NFCTag)
-      let hex = readerWriter.hexString(with: tagId, isAddColons: false)
-      print("tagid:\(tagId as NSData) hex:\(hex)")
-      self.readerWriter.end()
-    }
-  }
 }
 
-// other NFCReaderDelegate methods:
+/// -------------------------
+/// 3. NFC Tag Reader(iOS 13)
+/// -------------------------
+readerWriter.newWriterSession(with: self, isLegacy: false, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for read tag identifier")
+readerWriter.begin()
+
+// implement NFCReaderDelegate to read tag info from NFC chip
+func reader(_ session: NFCReader, didDetect tag: __NFCTag, didDetectNDEF message: NFCNDEFMessage) {
+    let tagId = readerWriter.tagIdentifier(with: tag)
+    let content = contentsForMessages([message])
+
+    DispatchQueue.main.async {
+      self.tagIdLabel.text = "Read Tag Identifier:\(tagId.hexadecimal)"
+      self.tagInfoTextView.text = "TagInfo:\n\(tagInfosDetail)\nNFCNDEFMessage:\n\(content)"
+    }
+    self.readerWriter.end()
+}
+
+/// --------------------------------
+/// other NFCReaderDelegate methods:
+/// --------------------------------
 func readerDidBecomeActive(_ session: NFCReader) {
   print("Reader did become")
 }

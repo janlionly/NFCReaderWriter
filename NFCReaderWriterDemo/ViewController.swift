@@ -11,9 +11,9 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet var tagIdLabel: UILabel!
+    @IBOutlet var tagInfoTextView: UITextView!
     @IBOutlet weak var textView: UITextView!
     let readerWriter = NFCReaderWriter.sharedInstance()
-    var isWrite: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,29 +30,16 @@ class ViewController: UIViewController {
     @IBAction func writeButtonTapped(_ sender: Any) {
         readerWriter.newWriterSession(with: self, isLegacy: true, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for write")
         readerWriter.begin()
-        isWrite = true
     }
     
     @IBAction func readTagIDButtonTapped(_ sender: Any) {
         readerWriter.newWriterSession(with: self, isLegacy: false, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for read tag identifier")
         readerWriter.begin()
-        isWrite = false
     }
     
-}
-
-extension ViewController: NFCReaderDelegate {
+    // Utilies
     
-    func readerDidBecomeActive(_ session: NFCReader) {
-        print("Reader did become")
-    }
-    
-    func reader(_ session: NFCReader, didInvalidateWithError error: Error) {
-            print("ERROR:\(error)")
-            readerWriter.end()
-        }
-        
-    func reader(_ session: NFCReader, didDetectNDEFs messages: [NFCNDEFMessage]) {
+    func contentsForMessages(_ messages: [NFCNDEFMessage]) -> String {
         var recordInfos = ""
         
         for message in messages {
@@ -69,6 +56,73 @@ extension ViewController: NFCReaderDelegate {
                 recordInfos += "Payload raw data: \(record.payload as NSData)\n\n"
             }
         }
+        
+        return recordInfos
+    }
+    
+    func getTagInfos(_ tag: __NFCTag) -> [String: Any] {
+        var infos: [String: Any] = [:]
+
+        switch tag.type {
+        case .miFare:
+            if let miFareTag = tag.asNFCMiFareTag() {
+                switch miFareTag.mifareFamily {
+                case .desfire:
+                    infos["TagType"] = "MiFare DESFire"
+                case .ultralight:
+                    infos["TagType"] = "MiFare Ultralight"
+                case .plus:
+                    infos["TagType"] = "MiFare Plus"
+                case .unknown:
+                    infos["TagType"] = "MiFare compatible ISO14443 Type A"
+                @unknown default:
+                    infos["TagType"] = "MiFare unknown"
+                }
+                if let bytes = miFareTag.historicalBytes {
+                    infos["HistoricalBytes"] = bytes.hexadecimal
+                }
+                infos["Identifier"] = miFareTag.identifier.hexadecimal
+            }
+        case .iso7816Compatible:
+            if let compatibleTag = tag.asNFCISO7816Tag() {
+                infos["TagType"] = "ISO7816"
+                infos["InitialSelectedAID"] = compatibleTag.initialSelectedAID
+                infos["Identifier"] = compatibleTag.identifier.hexadecimal
+                if let bytes = compatibleTag.historicalBytes {
+                    infos["HistoricalBytes"] = bytes.hexadecimal
+                }
+                if let data = compatibleTag.applicationData {
+                    infos["ApplicationData"] = data.hexadecimal
+                }
+                infos["OroprietaryApplicationDataCoding"] = compatibleTag.proprietaryApplicationDataCoding
+            }
+        case .ISO15693:
+            if let iso15693Tag = tag.asNFCISO15693Tag() {
+                infos["TagType"] = "ISO15693"
+                infos["Identifier"] = iso15693Tag.identifier
+                infos["ICSerialNumber"] = iso15693Tag.icSerialNumber.hexadecimal
+                infos["ICManufacturerCode"] = iso15693Tag.icManufacturerCode
+            }
+        default:
+            break
+        }
+        return infos
+    }
+}
+
+extension ViewController: NFCReaderDelegate {
+    func readerDidBecomeActive(_ session: NFCReader) {
+        print("Reader did become")
+    }
+    
+    func reader(_ session: NFCReader, didInvalidateWithError error: Error) {
+            print("ERROR:\(error)")
+            readerWriter.end()
+        }
+        
+    func reader(_ session: NFCReader, didDetectNDEFs messages: [NFCNDEFMessage]) {
+        let  recordInfos = contentsForMessages(messages)
+        
         DispatchQueue.main.async {
             self.textView.text = recordInfos
         }
@@ -79,40 +133,52 @@ extension ViewController: NFCReaderDelegate {
     func reader(_ session: NFCReader, didDetect tags: [NFCNDEFTag]) {
         print("did detect tags")
         
-        if isWrite {
-            var payloadData = Data([0x02])
-            let urls = ["apple.com", "google.com", "facebook.com"]
-            payloadData.append(urls[Int.random(in: 0..<urls.count)].data(using: .utf8)!)
+        var payloadData = Data([0x02])
+        let urls = ["apple.com", "google.com", "facebook.com"]
+        payloadData.append(urls[Int.random(in: 0..<urls.count)].data(using: .utf8)!)
 
-            let payload = NFCNDEFPayload.init(
-                format: NFCTypeNameFormat.nfcWellKnown,
-                type: "U".data(using: .utf8)!,
-                identifier: Data.init(count: 0),
-                payload: payloadData,
-                chunkSize: 0)
+        let payload = NFCNDEFPayload.init(
+            format: NFCTypeNameFormat.nfcWellKnown,
+            type: "U".data(using: .utf8)!,
+            identifier: Data.init(count: 0),
+            payload: payloadData,
+            chunkSize: 0)
 
-            let message = NFCNDEFMessage(records: [payload])
+        let message = NFCNDEFMessage(records: [payload])
 
-            readerWriter.write(message, to: tags.first!) { (error) in
-                if let err = error {
-                    print("ERR:\(err)")
-                } else {
-                    print("write success")
-                }
-                self.readerWriter.end()
+        readerWriter.write(message, to: tags.first!) { (error) in
+            if let err = error {
+                print("ERR:\(err)")
+            } else {
+                print("write success")
             }
-        } else {
-            if let tag = tags.first {
-                let tagId = readerWriter.tagIdentifier(with: tag as! __NFCTag)
-                let hex = readerWriter.hexString(with: tagId, isAddColons: false)
-                DispatchQueue.main.async {
-                    self.tagIdLabel.text = "Read Tag Identifier:\n\(hex)"
-                }
-                
-                print("tagid:\(tagId as NSData) hex:\(hex)")
-                self.readerWriter.end()
-            }
+            self.readerWriter.end()
         }
+    }
+    
+    func reader(_ session: NFCReader, didDetect tag: __NFCTag, didDetectNDEF message: NFCNDEFMessage) {
+        let tagId = readerWriter.tagIdentifier(with: tag)
+        let content = contentsForMessages([message])
+        
+        let tagInfos = getTagInfos(tag)
+        var tagInfosDetail = ""
+        tagInfos.forEach { (item) in
+            tagInfosDetail = tagInfosDetail + "\(item.key): \(item.value)\n"
+        }
+        
+        DispatchQueue.main.async {
+            self.tagIdLabel.text = "Read Tag Identifier:\(tagId.hexadecimal)"
+            self.tagInfoTextView.text = "TagInfo:\n\(tagInfosDetail)\nNFCNDEFMessage:\n\(content)"
+        }
+        self.readerWriter.end()
+    }
+}
+
+extension Data {
+    /// Hexadecimal string representation of `Data` object.
+    var hexadecimal: String {
+        return map { String(format: "%02x", $0) }
+            .joined()
     }
 }
 

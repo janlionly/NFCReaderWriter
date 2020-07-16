@@ -50,17 +50,41 @@
 }
 
 - (void)tagReaderSession:(NFCTagReaderSession *)session didDetectTags:(NSArray<__kindof id<NFCTag>> *)tags {
-    if ([self.delegate respondsToSelector:@selector(reader:didDetectTags:)]) {
-        [self.delegate reader:self didDetectTags:tags];
+//    if ([self.delegate respondsToSelector:@selector(reader:didDetectTags:)]) {
+//        [self.delegate reader:self didDetectTags:tags];
+//    }
+    if (tags.count > 0) {
+        [session connectToTag:tags.firstObject completionHandler:^(NSError * _Nullable error) {
+            if (nil != error) {
+                session.alertMessage = NSLocalizedString(@"Unable to connect to tag.", @"");
+                [session invalidateSession];
+                return;
+            }
+            [tags.firstObject queryNDEFStatusWithCompletionHandler:^(NFCNDEFStatus status, NSUInteger capacity, NSError * _Nullable error) {
+                if (status == NFCNDEFStatusNotSupported) {
+                    session.alertMessage = NSLocalizedString(@"Tag is not NDEF compliant", @"");
+                    [session invalidateSession];
+                    return;
+                } else if (nil != error) {
+                    session.alertMessage = NSLocalizedString(@"Unable to query NDEF status of tag", @"");
+                    [session invalidateSession];
+                    return;
+                }
+                
+                [tags.firstObject readNDEFWithCompletionHandler:^(NFCNDEFMessage * _Nullable message, NSError * _Nullable error) {
+                    if (nil != error || nil == message) {
+                        session.alertMessage = NSLocalizedString(@"Fail to read NDEF from tag", @"");
+                        [session invalidateSession];
+                        return;
+                    } else {
+                        if ([self.delegate respondsToSelector:@selector(reader:didDetectTag:didDetectNDEF:)]) {
+                            [self.delegate reader:self didDetectTag:tags.firstObject didDetectNDEF:message];
+                        }
+                    }
+                }];
+            }];
+        }];
     }
-    
-    // GET NFC TAG UID
-//    self.cuurentTag = [tags firstObject];
-//    NSLog(@"TagType: %lu, %lu", (unsigned long)self.cuurentTag.type, (unsigned long)NFCTagTypeISO7816Compatible);
-//    id<NFCISO7816Tag> mifareTag = [self.cuurentTag asNFCISO7816Tag];
-//    NSData *data = mifareTag.identifier;
-//    NSString *string = [self convertDataBytesToHex:data];
-//    NSLog(@"result---%@",string);
 }
 
 - (NSData *)tagIdentifierWithTag:(id<NFCTag>)tag {
