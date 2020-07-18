@@ -6,7 +6,7 @@
 ![Swift](https://img.shields.io/badge/%20in-swift%204.2-orange.svg)
 
 ## Description
-**NFCReaderWriter** which supports to read data from NFC chips(iOS 11) and write data to NFC chips(iOS 13) by iOS devices. Compatible with both Swift and Objective-C.
+**NFCReaderWriter** which supports to read data from NFC chips(iOS 11), write data to NFC chips(iOS 13) and read NFC tags infos(iOS 13) by iOS devices. Compatible with both Swift and Objective-C.
 
 ## Installation
 ### CocoaPods
