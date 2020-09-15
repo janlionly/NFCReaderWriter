@@ -1,0 +1,3 @@
+# direct swift
+*.* linguist-language=Swift
+project-docs/* linguist-documentation
