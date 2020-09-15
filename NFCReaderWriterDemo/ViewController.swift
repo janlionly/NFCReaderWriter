@@ -19,26 +19,26 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    // MARK: Actions
-    // iOS 11
+    // MARK: - Actions
+    // iOS 11 NFC Reader: NFCNDEFMessage
     @IBAction func readButtonTapped(_ sender: Any) {
         readerWriter.newReaderSession(with: self, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for read")
         readerWriter.begin()
     }
     
-    // iOS 13
+    // iOS 13 NFC Writer: write data to record
     @IBAction func writeButtonTapped(_ sender: Any) {
         readerWriter.newWriterSession(with: self, isLegacy: true, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for write")
         readerWriter.begin()
     }
     
+    // iOS 13 NFC Tag Reader: Tag Info and NFCNDEFMessage
     @IBAction func readTagIDButtonTapped(_ sender: Any) {
         readerWriter.newWriterSession(with: self, isLegacy: false, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for read tag identifier")
         readerWriter.begin()
     }
     
-    // Utilies
-    
+    // MARK: - Utilities
     func contentsForMessages(_ messages: [NFCNDEFMessage]) -> String {
         var recordInfos = ""
         
@@ -126,7 +126,10 @@ extension ViewController: NFCReaderDelegate {
             print("ERROR:\(error)")
             readerWriter.end()
         }
-        
+
+    /// -----------------------------
+    // MARK: - 1. NFC Reader(iOS 11):
+    /// -----------------------------
     func reader(_ session: NFCReader, didDetectNDEFs messages: [NFCNDEFMessage]) {
         let  recordInfos = contentsForMessages(messages)
 
@@ -137,6 +140,9 @@ extension ViewController: NFCReaderDelegate {
         readerWriter.end()
     }
 
+    /// -----------------------------
+    // MARK: - 2. NFC Writer(iOS 13):
+    /// -----------------------------
     func reader(_ session: NFCReader, didDetect tags: [NFCNDEFTag]) {
         print("did detect tags")
 
@@ -163,6 +169,9 @@ extension ViewController: NFCReaderDelegate {
         }
     }
     
+    /// --------------------------------
+    // MARK: - 3. NFC Tag Reader(iOS 13)
+    /// --------------------------------
     func reader(_ session: NFCReader, didDetect tag: __NFCTag, didDetectNDEF message: NFCNDEFMessage) {
         let tagId = readerWriter.tagIdentifier(with: tag)
         let content = contentsForMessages([message])
