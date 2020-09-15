@@ -56,7 +56,7 @@
     if (tags.count > 0) {
         [session connectToTag:tags.firstObject completionHandler:^(NSError * _Nullable error) {
             if (nil != error) {
-                session.alertMessage = NSLocalizedString(@"Unable to connect to tag.", @"");
+                session.alertMessage = NSLocalizedString(@"Unable to connect to tag", @"");
                 [session invalidateSession];
                 return;
             }

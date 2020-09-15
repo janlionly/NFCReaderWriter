@@ -103,6 +103,13 @@ class ViewController: UIViewController {
                 infos["ICSerialNumber"] = iso15693Tag.icSerialNumber.hexadecimal
                 infos["ICManufacturerCode"] = iso15693Tag.icManufacturerCode
             }
+            
+        case .feliCa:
+            if let feliCaTag = tag.asNFCFeliCaTag() {
+                infos["TagType"] = "FeliCa"
+                infos["Identifier"] = feliCaTag.currentIDm
+                infos["SystemCode"] = feliCaTag.currentSystemCode.hexadecimal
+            }
         default:
             break
         }
