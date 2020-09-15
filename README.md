@@ -1,4 +1,6 @@
 # NFCReaderWriter
+<img src="https://github.com/janlionly/NFCReaderWriter/blob/master/Resources/NFC-Result.PNG" width="250" height="541">
+
 [![Version](https://img.shields.io/cocoapods/v/NFCReaderWriter.svg?style=flat)](https://cocoapods.org/pods/NFCReaderWriter)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/NFCReaderWriter.svg?style=flat)](https://github.com/janlionly/NFCReaderWriter/blob/master/LICENSE)
