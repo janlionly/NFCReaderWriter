@@ -22,10 +22,10 @@ github "janlionly/NFCReaderWriter"
 ```
 
 ### Swift Package Manager
-- iOS: Open Xcode, File->Swift Packages, search input **https://github.com/janlionly/NFCReaderWriter.git**, and then select Version Up to Next Major **1.1.0** < .
+- iOS: Open Xcode, File->Swift Packages, search input **https://github.com/janlionly/NFCReaderWriter.git**, and then select Version Up to Next Major **1.1.3** < .
 - Or add dependencies in your `Package.swift`:
 ```swift
-.package(url: "https://github.com/janlionly/NFCReaderWriter.git", .upToNextMajor(from: "1.1.0")),
+.package(url: "https://github.com/janlionly/NFCReaderWriter.git", .upToNextMajor(from: "1.1.3")),
 ```
 
 ## Usage
@@ -42,6 +42,9 @@ github "janlionly/NFCReaderWriter"
 **More information please run demo above.**
 
 ```swift
+// Updated: add alertMessage property when detected NFC successfully 
+readerWriter.detectedMessage = "Your Read/Write NFC successful content."
+
 /// ----------------------
 /// 1. NFC Reader(iOS 11):
 /// ----------------------

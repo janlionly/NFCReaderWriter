@@ -22,20 +22,26 @@ class ViewController: UIViewController {
     // MARK: - Actions
     // iOS 11 NFC Reader: NFCNDEFMessage
     @IBAction func readButtonTapped(_ sender: Any) {
-        readerWriter.newReaderSession(with: self, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for read")
+        readerWriter.end()
+        readerWriter.newReaderSession(with: self, invalidateAfterFirstRead: false, alertMessage: "Nearby NFC card for read")
         readerWriter.begin()
+        self.readerWriter.detectedMessage = "detected NFC Message"
     }
     
     // iOS 13 NFC Writer: write data to record
     @IBAction func writeButtonTapped(_ sender: Any) {
+        readerWriter.end()
         readerWriter.newWriterSession(with: self, isLegacy: true, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for write")
         readerWriter.begin()
+        self.readerWriter.detectedMessage = "Write data success"
     }
     
     // iOS 13 NFC Tag Reader: Tag Info and NFCNDEFMessage
     @IBAction func readTagIDButtonTapped(_ sender: Any) {
+        readerWriter.end()
         readerWriter.newWriterSession(with: self, isLegacy: false, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for read tag identifier")
         readerWriter.begin()
+        readerWriter.detectedMessage = "detected Tag info"
     }
     
     // MARK: - Utilities
@@ -136,7 +142,6 @@ extension ViewController: NFCReaderDelegate {
         DispatchQueue.main.async {
             self.textView.text = recordInfos
         }
-
         readerWriter.end()
     }
 

@@ -73,22 +73,23 @@
 
 #pragma mark - Helper
 
+- (void)setDetectedMessage:(NSString *)detectedMessage {
+    self.reader.detectedMessage = detectedMessage;
+}
+
 - (void)begin {
-    
     if (self.reader) {
         [self.reader begin];
     }
 }
 
 - (void)restart {
-    
     if (self.reader) {
         [self.reader restart];
     }
 }
 
 - (void)end {
-    
     if (self.reader) {
         [self.reader end];
     }

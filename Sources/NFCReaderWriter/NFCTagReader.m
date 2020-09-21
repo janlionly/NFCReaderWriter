@@ -77,6 +77,9 @@
                         [session invalidateSession];
                         return;
                     } else {
+                        if (nil != self.detectedMessage) {
+                            session.alertMessage = self.detectedMessage;
+                        }
                         if ([self.delegate respondsToSelector:@selector(reader:didDetectTag:didDetectNDEF:)]) {
                             [self.delegate reader:self didDetectTag:tags.firstObject didDetectNDEF:message];
                         }

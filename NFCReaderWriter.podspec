@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name             = 'NFCReaderWriter'
-  s.version          = '1.1.2'
+  s.version          = '1.1.3'
   s.summary          = 'NFCReaderWriter which supports to read data from NFC chips(iOS 11) and write data to NFC chips(iOS 13) by iOS devices. Compatible with both Swift and Objective-C.'
- 
+
   s.homepage         = 'https://github.com/janlionly/NFCReaderWriter'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'janlionly' => 'janlionly@gmail.com' }

@@ -39,12 +39,10 @@
 }
 
 - (void)readerSession:(NFCNDEFReaderSession *)session didDetectNDEFs:(NSArray<NFCNDEFMessage *> *)messages {
-    
     [self.delegate reader:self didDetectNDEFs:messages];
 }
 
 - (void)readerSession:(NFCNDEFReaderSession *)session didDetectTags:(NSArray<__kindof id<NFCNDEFTag>> *)tags {
-    
     if ([self.delegate respondsToSelector:@selector(reader:didDetectTags:)]) {
         [self.delegate reader:self didDetectTags:tags];
     }
@@ -108,7 +106,11 @@
             NSLog(@"Write: %@", error);
         }
 #endif
+        if (nil != self.detectedMessage && error == nil) {
+            self.session.alertMessage = self.detectedMessage;
+        }
         completion(error);
+        
     }];
 }
 

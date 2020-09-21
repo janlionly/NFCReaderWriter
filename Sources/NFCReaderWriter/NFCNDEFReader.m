@@ -39,6 +39,9 @@
 
 // iOS 11
 - (void)readerSession:(NFCNDEFReaderSession *)session didDetectNDEFs:(NSArray<NFCNDEFMessage *> *)messages {
+    if (nil != self.detectedMessage) {
+        session.alertMessage = self.detectedMessage;
+    }
     if ([self.delegate respondsToSelector:@selector(reader:didDetectNDEFs:)]) {
         [self.delegate reader:self didDetectNDEFs:messages];
     }
