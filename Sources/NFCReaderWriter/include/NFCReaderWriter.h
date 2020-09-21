@@ -56,10 +56,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Helper
 
+@property (nonatomic, strong) NSString *detectedMessage;
 - (void)begin;
 - (void)restart;
 - (void)end;
 - (BOOL)canWrite;
+
 
 /*!
 * @method createPayloadWithFormat:type:indetifier:message:
