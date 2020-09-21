@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     @IBAction func readTagIDButtonTapped(_ sender: Any) {
         readerWriter.newWriterSession(with: self, isLegacy: false, invalidateAfterFirstRead: true, alertMessage: "Nearby NFC card for read tag identifier")
         readerWriter.begin()
-        readerWriter.detectedMessage = "detected Tag info"
+        //readerWriter.detectedMessage = "detected Tag info"
     }
     
     // MARK: - Utilities
@@ -188,6 +188,7 @@ extension ViewController: NFCReaderDelegate {
             self.tagIdLabel.text = "Read Tag Identifier:\(tagId.hexadecimal)"
             self.tagInfoTextView.text = "TagInfo:\n\(tagInfosDetail)\nNFCNDEFMessage:\n\(content)"
         }
+        self.readerWriter.alertMessage = "NFC Tag Info detected"
         self.readerWriter.end()
     }
 }

@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *alertMessage;
 @property (nonatomic, strong) NSString *detectedMessage;
+@property (nonatomic, strong) NFCReaderSession *readerSession;
 @property (nonatomic) BOOL invalidate;
 
 @property (nonatomic, weak) id<NFCReaderDelegate> delegate;

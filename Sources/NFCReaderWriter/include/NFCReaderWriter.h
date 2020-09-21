@@ -57,6 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Helper
 
 @property (nonatomic, strong) NSString *detectedMessage;
+@property (nonatomic, strong) NSString *alertMessage;
 - (void)begin;
 - (void)restart;
 - (void)end;

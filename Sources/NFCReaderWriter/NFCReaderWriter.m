@@ -77,6 +77,18 @@
     self.reader.detectedMessage = detectedMessage;
 }
 
+- (NSString *)detectedMessage {
+    return self.reader.detectedMessage;
+}
+
+- (void)setAlertMessage:(NSString *)alertMessage {
+    self.reader.readerSession.alertMessage = alertMessage;
+}
+
+- (NSString *)alertMessage {
+    return  self.reader.readerSession.alertMessage;
+}
+
 - (void)begin {
     if (self.reader) {
         [self.reader begin];

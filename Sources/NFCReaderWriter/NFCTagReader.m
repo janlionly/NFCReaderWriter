@@ -30,6 +30,7 @@
                                                                  delegate:self
                                                                     queue:[NFCReaderWriter queue]];
         self.session.alertMessage = alertMessage;
+        self.readerSession = self.session;
     }
     
     return self;

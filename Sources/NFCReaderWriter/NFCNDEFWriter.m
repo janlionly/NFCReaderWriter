@@ -26,6 +26,7 @@
     if (self) {
         self.session = [[NFCNDEFReaderSession alloc] initWithDelegate:self queue:[NFCReaderWriter queue] invalidateAfterFirstRead:invalidate];
         self.session.alertMessage = alertMessage;
+        self.readerSession = self.session;
     }
     
     return self;
