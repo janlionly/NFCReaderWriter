@@ -42,12 +42,6 @@ github "janlionly/NFCReaderWriter"
 **More information please run demo above.**
 
 ```swift
-// Updated: add alertMessage property when detected NFC successfully 
-readerWriter.detectedMessage = "Your Read/Write NFC successful content."
-
-// Or you can change alertMessage anywhere before call 'readerWriter.end()' as follow:
-readerWriter.alertMessage = "NFC Tag Info detected"
-
 /// ----------------------
 /// 1. NFC Reader(iOS 11):
 /// ----------------------
@@ -128,7 +122,39 @@ func reader(_ session: NFCReader, didInvalidateWithError error: Error) {
 }
 ```
 
+## Version Updates
+
+### V1.1.4
+
+```swift
+// You can change alertMessage anywhere before call 'readerWriter.end()' as follow:
+readerWriter.alertMessage = "NFC Tag Info detected"
+```
+
+### V1.1.3
+
+```swift
+// Updated: add alertMessage property when detected NFC successfully 
+readerWriter.detectedMessage = "Your Read/Write NFC successful content."
+```
+
+### V1.1.2
+
+```swift
+// Support for reading tag infos and NDEFMessage when the NFC chip was scanned once
+func reader(_ session: NFCReader, didDetect tag: __NFCTag, didDetectNDEF message: NFCNDEFMessage)
+```
+
+### V1.0.6
+
+```swift
+// Support for reading tag identifier
+```
+
+
+
 ## Requirements
+
 - iOS 11.0+
 - Swift 4.2 to 5.2
 
