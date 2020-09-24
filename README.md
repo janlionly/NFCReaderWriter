@@ -149,6 +149,10 @@ func reader(_ session: NFCReader, didDetect tag: __NFCTag, didDetectNDEF message
 
 ```swift
 // Support for reading tag identifier
+func reader(_ session: NFCReader, didDetect tag: __NFCTag) {
+  let tagId = readerWriter.tagIdentifier(with: tag)
+  // ...
+}
 ```
 
 
